@@ -1,0 +1,73 @@
+.thumb {
+  width: 100vw;
+}
+
+.edit-image {
+  width: 100%;
+}
+
+li {
+  position: relative;
+  margin-bottom: -6px;
+}
+
+.item-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 6px;
+  padding-left: 10px;
+  z-index: 1;
+  width: 100vw;
+  // display: block;
+}
+
+.items-list {
+  list-style: none;
+  padding-left: 0;
+  align-items: baseline;
+  display: block;
+}
+
+.item-name, .item-price {
+  font-size: 18px;
+  display: inline-block;
+}
+
+.item-price {
+  text-align: right;
+  width: 24%;
+}
+
+.item-name {
+  width: 70%;
+  margin-bottom: 0px;
+}
+
+.item-description {
+  font-size: 14px;
+}
+
+.item-name, .item-description, .item-price {
+  color: white;
+  font-weight: normal;
+  text-shadow: none;
+}
+
+.sprite {
+	background: url('imgs/stars.png') no-repeat -58px -21px;
+	width: 195px;
+	height: 188px;
+}
+
+.fav {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  max-width: 35px;
+  // display: block;
+  z-index: 5
+}
+
+.checkboxes {
+  text-align: center;
+}

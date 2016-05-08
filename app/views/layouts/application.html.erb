@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yard Sale</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <script id="digits-sdk" src="https://cdn.digits.com/1/sdk.js" async></script>
+</head>
+<body>
+  <nav data-role="navbar">
+    <ul>
+      <li><%= link_to 'Items', items_path, "data-transition" => "slide", "data-icon" => "grid" %></li>
+      <li><%= link_to 'Favourites', items_path, "data-transition" => "slide", "data-icon" => "star" %></li>
+    </ul>
+  </nav>
+<p>Current location: <%= request.location.city %></p>
+<%= yield %>
+
+</body>
+</html>

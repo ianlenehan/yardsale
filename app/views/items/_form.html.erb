@@ -1,0 +1,31 @@
+<%= form_for(@item, :html => {:class => "rails_form", "data-ajax" => false }) do |f| %>
+<% if (@item.image) %>
+<%= image_tag @item.image, :class => "edit-image" %>
+<% end %>
+<fieldset>
+  <%= f.label :image, "Photo" %>
+  <span class="upload"><%= f.file_field :image %></span>
+</fieldset>
+<fieldset>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</fieldset>
+<fieldset>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+</fieldset>
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" class="checkboxes">
+  <%= f.check_box(:negotiable, {}, true) %>
+  <%= f.label(:negotiable, "Negotiable") %>
+  <%= f.check_box(:charity, {}, true) %>
+  <%= f.label(:charity, "Free to a Charity") %>
+</fieldset>
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+
+</fieldset>
+<fieldset>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</fieldset>
+<%= f.submit %>
+<% end %>

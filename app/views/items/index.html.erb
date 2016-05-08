@@ -1,0 +1,24 @@
+<h1>Items</h1>
+<ul class="items-list">
+  <% @items.each do |item| %>
+  <li class="item-holder"><%= image_tag item.image, :class => "thumb" %>
+
+    <%= link_to item_path(item), "data-transition" => "slide" do %>
+    <div class="item-overlay">
+      <h1 class="item-name"><%= item.name %></h1>
+      <span class="item-price">
+        <% if (item.price === 0 || item.price == nil) %>
+        Free
+      <% else %>
+        $<%= item.price %>
+        <% end %>
+        <% if (item.negotiable) %>
+        (neg)
+        <% end %>
+      </span>
+      <p class="item-description"><%= item.description %></p>
+    </div>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

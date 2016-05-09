@@ -29,6 +29,7 @@ gem 'cloudinary'
 gem 'annotate'
 gem 'jquery_mobile_rails'
 gem 'httparty'
+gem 'geocoder'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -1,4 +1,8 @@
 <h3 class="ui bar ui-bar-a ui-corner-all h3">Edit Item</h3>
 <div class="ui-body ui-body-a u-corner-al">
+  <% if @currentUser.long %>
+  <div id="hidden-long"><%= @currentUser.long %></div>
+  <div id="hidden-lat"><%= @currentUser.lat %></div>
+  <% end %>
 <%= render :partial => 'form' %>
 </div>

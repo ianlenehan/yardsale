@@ -19,13 +19,13 @@
         $<%= item.price %>
         <% end %>
         <% if (item.negotiable) %>
-        (neg)
+        <span class="price-text">(neg)</span>
         <% end %>
         <% if (item.charity) %>
-        (or charity)
+        <span class="price-text">(or charity)</span>
         <% end %>
       </span>
-      <p class="item-description"><%= item.description %></p>
+      <p class="item-description"><%= item.description %> (distance: <%= (item.distance * 1000).to_i %>m)</p>
     </div>
     <% end %>
   </li>

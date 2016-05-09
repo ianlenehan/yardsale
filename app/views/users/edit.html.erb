@@ -1,2 +1,27 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1><%= @currentUser.phone %></h1>
+
+<% if !@currentUser.name_first %>
+<p>You must provide a username and default location in order to post items or to contact sellers.</p>
+<% end %>
+
+<%= form_for(@currentUser, :html => {:class=> "rails_form"}) do |f| %>
+<p><%= f.label :name_first, 'First name' %>
+  <%= f.text_field :name_first, :required => true %></p>
+
+  <p><%= f.label :name_last, 'Last name' %>
+  <%= f.text_field :name_last %></p>
+
+  <input id="save-location" type="button" value="Save My Location">
+
+  <%= f.text_field :lat, :class => 'lat-input' %></p>
+  <%= f.text_field :long, :class => 'long-input' %></p>
+
+  <p><%= f.label :email %>
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :photo, 'Photo' %>
+  <span class="upload"><%= f.file_field :photo %></p></span>
+
+  <p><span class="ruby_smallbutton"><%= f.submit "Update" %></span>
+
+<% end %>

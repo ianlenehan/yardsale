@@ -9,6 +9,14 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    req = Cloudinary::Uploader.upload( params[:user][:photo] ) if params[:user][:photo]
+    user = @currentUser
+    user.photo = req["url"] if req
+    user.update user_params
+    redirect_to user_path
+  end
+
   def show
     @user = @currentUser
   end
@@ -41,5 +49,9 @@ class UsersController < ApplicationController
     # redirect_to '/items/:phone'
   end
 
+private
+  def user_params
+    params.require(:user).permit(:name_first, :name_last, :email, :lat, :long)
+  end
 
 end

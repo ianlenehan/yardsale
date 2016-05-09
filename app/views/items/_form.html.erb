@@ -21,14 +21,17 @@
   <%= f.label(:charity, "Free to a Charity") %>
 </fieldset>
 <fieldset>
-  <button id="current-location">Add Current Location</button>
-  <button id="default-location">Add Default Location</button>
-  <%= f.text_field :lat, :class => "lat-input" %>
-  <%= f.text_field :long, :class => "long-input" %>
+  <input id="current-location" type="button" value="Add Current Location">
+  <input id="default-location" type="button" value="Add Default Location">
+  <%= f.text_field :latitude, :class => "lat-input" %>
+  <%= f.text_field :longitude, :class => "long-input" %>
 </fieldset>
 <fieldset>
   <%= f.label :description %>
   <%= f.text_field :description %>
+</fieldset>
+<fieldset>
+  <%= f.collection_select(:category_id, Category.order(:name), :id, :name, include_blank: true) %>
 </fieldset>
 <%= f.submit %>
 <% end %>

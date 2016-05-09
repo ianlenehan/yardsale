@@ -20,4 +20,6 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_many :favourites
+  geocoded_by :latitude
+  # after_validation :geocode, :if => :address_changed?
 end

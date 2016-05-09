@@ -6,6 +6,9 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script id="digits-sdk" src="https://cdn.digits.com/1/sdk.js" async></script>
+  <!-- <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1W_PZDArK46FW21IKVhhA2mzM1SfFVSI&libraries=places">
+  </script> -->
 </head>
 <body>
   <nav data-role="navbar">
@@ -14,7 +17,13 @@
       <li><%= link_to 'Favourites', items_path, "data-transition" => "slide", "data-icon" => "star" %></li>
     </ul>
   </nav>
-<p>Current location: <%= request.location.city %></p>
+
+  <% if @currentUser.present? %>
+  <%= button_to(@currentUser.phone, user_path(@currentUser.id), :method => :get)  %>
+  <% else %>
+  <button id="login">Login / Signup</button>
+  <% end %>
+  <div class="my-digits-container"></div>
 <%= yield %>
 
 </body>

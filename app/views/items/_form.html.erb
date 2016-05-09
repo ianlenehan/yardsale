@@ -20,8 +20,11 @@
   <%= f.check_box(:charity, {}, true) %>
   <%= f.label(:charity, "Free to a Charity") %>
 </fieldset>
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-
+<fieldset>
+  <button id="current-location">Add Current Location</button>
+  <button id="default-location">Add Default Location</button>
+  <%= f.text_field :lat, :class => "lat-input" %>
+  <%= f.text_field :long, :class => "long-input" %>
 </fieldset>
 <fieldset>
   <%= f.label :description %>

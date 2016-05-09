@@ -28,7 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary'
 gem 'annotate'
 gem 'jquery_mobile_rails'
-gem 'geokit-rails'
+gem 'httparty'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

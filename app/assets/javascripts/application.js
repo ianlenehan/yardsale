@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
-//= require underscore.js
 //= require jquery.touchSwipe.min.js
 //= require_tree .

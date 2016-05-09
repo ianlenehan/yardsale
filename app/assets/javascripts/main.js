@@ -25,5 +25,8 @@ $(document).ready(function() {
 
   });
 
+  $('#update-location').on('click', function () {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  });
 
 });

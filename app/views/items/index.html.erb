@@ -1,4 +1,10 @@
 <h1>Items</h1>
+<p id="update-location">Update location</p>
+<% if @currentUser.present? %>
+<%= link_to new_item_path do %>
+  <%= image_tag 'add.png', :id => "add-item" %>
+  <% end %>
+  <% end %>
 <ul class="items-list">
   <% @items.each do |item| %>
   <li class="item-holder"><%= image_tag item.image, :class => "thumb" %>
@@ -14,6 +20,9 @@
         <% end %>
         <% if (item.negotiable) %>
         (neg)
+        <% end %>
+        <% if (item.charity) %>
+        (or charity)
         <% end %>
       </span>
       <p class="item-description"><%= item.description %></p>

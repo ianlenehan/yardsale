@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     returned_api_url = params["apiUrl"]
     my_key = 'e1SWhR3fwM8ftCJw0uQ93mY3J'
     options = {
-      headers: {
+      "headers" => {
         'Authorization': params["authHeader"]
       }
     }

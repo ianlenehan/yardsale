@@ -21,6 +21,17 @@ class UsersController < ApplicationController
     @user = @currentUser
   end
 
+  def locate
+    user = @currentUser
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @response }
+    end
+    user.current_latitude = params[:lat]
+    user.current_longitude = params[:long]
+    user.save
+  end
+
   def verify
     returned_key = params["authHeader"].split("=")[1][1, 25]
     returned_api_url = params["apiUrl"]

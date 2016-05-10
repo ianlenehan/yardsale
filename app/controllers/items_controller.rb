@@ -1,11 +1,24 @@
 class ItemsController < ApplicationController
   def index
-    # @items = Item.all
-    @items = Item.near([-33.8611625, 151.17], 20, :units => :km)
+    session[:radius] += params[:km].to_i if params[:km].present?
+    user = @currentUser
+    if @currentUser
+      lat = user.current_latitude
+      long = user.current_longitude
+      @items = Item.near([lat, long], session[:radius], :units => :km)
+    else
+      @items = Item.all
+    end
+    render :index, :layout => ! params[:km].present?
+  end
+
+  def reset_km
+    session[:radius] = 10
+    redirect_to root_path
   end
 
   def new
-    if !@currentUser.name
+    if !@currentUser.name_first
       redirect_to edit_user_path(@currentUser)
     else
       @item = Item.new
@@ -43,6 +56,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price, :charity, :negotiable, :lat, :long, :category_id)
+    params.require(:item).permit(:name, :description, :price, :charity, :negotiable, :latitude, :longitude, :category_id)
   end
 end

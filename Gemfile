@@ -30,6 +30,7 @@ gem 'annotate'
 gem 'jquery_mobile_rails'
 gem 'httparty'
 gem 'geocoder'
+gem 'font-awesome-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

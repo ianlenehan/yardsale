@@ -9,13 +9,6 @@
 
 </head>
 <body>
-  <nav data-role="navbar">
-    <ul>
-      <li><%= link_to 'Items', items_path, "data-transition" => "slide", "data-icon" => "grid" %></li>
-      <li><%= link_to 'Favourites', items_path, "data-transition" => "slide", "data-icon" => "star" %></li>
-    </ul>
-  </nav>
-
   <% if @currentUser.present? %>
   <%= button_to(@currentUser.phone, user_path(@currentUser.id), :method => :get)  %>
   <% else %>
@@ -23,5 +16,49 @@
   <% end %>
   <div class="my-digits-container"></div>
 <%= yield %>
+
+<footer class="footer-nav" data-role="none">
+
+  <div class="icon-div" id="update-location">
+  <i class="fa fa-location-arrow faicon" aria-hidden="true"></i>
+  <span class="icon-text">Locate Me</span>
+  </div>
+
+  <div class="icon-div" id="sample-location">
+  <i class="fa fa-location-arrow faicon" aria-hidden="true"></i>
+  <span class="icon-text">Test Loc</span>
+  </div>
+
+  <a href="<%= new_item_path %>" class="icon-div">
+    <div id="add-item">
+    <i class="fa fa-plus-circle faicon" aria-hidden="true"></i>
+    <span class="icon-text">List Item</span>
+    </div>
+  </a>
+
+  <a href="" class="icon-div">
+    <div id="view-fav">
+    <i class="fa fa-star faicon" aria-hidden="true"></i>
+    <span class="icon-text">Favourites</span>
+    </div>
+  </a>
+
+  <a href="<%= items_path %>" class="icon-div">
+    <div id="view-items">
+    <i class="fa fa-list-ul faicon" aria-hidden="true"></i>
+    <span class="icon-text">Items</span>
+    </div>
+  </a>
+  <% if @currentUser.present? %>
+  <a href="<%= user_path(@currentUser.id) %>" class="icon-div" id="user-id" data="<%= @currentUser.id %>">
+    <div id="view-profile">
+    <i class="fa fa-user faicon" aria-hidden="true"></i>
+    <span class="icon-text">Profile</span>
+    </div>
+    <% end %>
+  </a>
+
+</footer>
 </body>
+
 </html>

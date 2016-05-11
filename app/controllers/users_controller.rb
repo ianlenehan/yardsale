@@ -37,15 +37,18 @@ class UsersController < ApplicationController
     returned_api_url = params["apiUrl"]
     my_key = 'e1SWhR3fwM8ftCJw0uQ93mY3J'
     options = {
-      "headers" => {
+      headers: {
         'Authorization': params["authHeader"]
       }
     }
     if returned_key == my_key && (returned_api_url[0, 18] == "https://api.digits" || returned_api_url[0, 19] == "http://api.twitter")
-      @verification = HTTParty.get("#{returned_api_url}", options)
+      @verification = HTTParty.get("#{returned_api_url.to_s}", options)
     else
       @verification = false
     end
+
+    byebug
+
     if !(@verification.parsed_response.key?("errors")) && (@verification.response.kind_of? Net::HTTPOK)
       @phone = @verification.parsed_response["phone_number"]
       @response = { :success => true, :phone => @phone }

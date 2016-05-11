@@ -45,7 +45,7 @@ var onLogin = function (loginResponse){
     var phone = loginResponse.phone;
     console.log(loginResponse);
     removeDigitsWindow();
-    window.location.pathname = '/session/' + phone;
+    // window.location.pathname = '/session/' + phone;
   };
 
   $.ajax({

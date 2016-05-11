@@ -1,4 +1,5 @@
 <h1><%= @currentUser.phone %></h1>
+<div class="ui-body ui-body-a u-corner-al">
 
 <% if !@currentUser.name_first %>
 <p>You must provide a username and default location in order to post items or to contact sellers.</p>
@@ -22,6 +23,7 @@
   <p><%= f.label :photo, 'Photo' %>
   <span class="upload"><%= f.file_field :photo %></p></span>
 
-  <p><span class="ruby_smallbutton"><%= f.submit "Update" %></span>
+  <p><%= f.submit "Update" %></p>
 
 <% end %>
+</div>

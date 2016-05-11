@@ -35,13 +35,19 @@
     <% end %>
     <% if @currentUser.present? && item.favourites.where(:user_id => @currentUser.id).exists? %>
     <img src="assets/favStar.png" class="fav magictime"></img>
+    <script>
+      $('.fav-count').fadeIn();
+    </script>
+    <% end %>
+    <% if item.favourites.length > 0 %>
+    <div class="fav-count"><%= item.favourites.length %></div>
     <% end %>
   </li>
   <% end %>
 </ul>
 <div id="km">
 
-<span id="add-km">Add 10 km</span>
-<span id="reset-km">Reset km</span>
+<span id="add-km" class='ui-btn ui-corner-all'>Add 10 km</span>
+<span id="reset-km" class='ui-btn ui-corner-all'>Reset km</span>
 
 </div>

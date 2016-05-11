@@ -1,3 +1,34 @@
-<h1>Items#show</h1>
-<p><%= @item.name %></p>
-<%= link_to 'Edit Item', edit_item_path %>
+<div class="ui-body ui-body-a u-corner-al">
+  <h1><%= @item.name %></h1>
+
+  <p><% if (@item.price === 0 || @item.price == nil) %>
+  Free
+  <% else %>
+  $<%= @item.price %>
+  <% end %></p>
+
+  <% if @item.negotiable %>
+  <p>Price is negotiable.</p>
+  <% end %>
+
+  <% if @item.charity %>
+  <p>Free to a registered charity. Seller is responsible for verification.</p>
+  <% end %>
+
+  <p><%= @item.description %></p>
+
+  <%= image_tag @item.image, :class=> 'edit-image' %>
+  <% if @item.favourites.length == 0 %>
+    <p>Nodoby have favourited this item yet.</p>
+  <% elsif @item.favourites.length == 1 %>
+    <p><%= @item.favourites.length %> person has favourited this item.</p>
+  <% else %>
+    <p><%= @item.favourites.length %> people have favourited this item.</p>
+  <% end %>
+  <a class="button-link" href="mailto:<%= @item.user.email %>"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>
+
+  <% if @currentUser.id == @item.user_id %>
+  <p>Close Item</p>
+  <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all' %>
+  <% end %>
+</div>

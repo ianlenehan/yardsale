@@ -1,5 +1,10 @@
+<div class="ui-body ui-body-a u-corner-al">
+
 <h1>Name: <%= @currentUser.name_first %> <%= @currentUser.name_last %></h1>
 <p><%= image_tag @currentUser.photo, :class => 'profile-img' %></p>
-<p>Name: <%= @currentUser.name_first %> <%= @currentUser.name_last %></p>
-<%= link_to "Edit Profile", edit_user_path %>
-<%= link_to "Logout", logout_path, :method => :delete %>
+<p>email: <%= @currentUser.email %> </p>
+
+<%= link_to "Edit Profile", edit_user_path, :class => 'ui-btn ui-corner-all' %>
+<%= link_to "Logout", logout_path, :method => :delete, :class => 'ui-btn ui-corner-all' %>
+
+</div>

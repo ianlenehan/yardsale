@@ -46,12 +46,12 @@
   </a>
 
   <% if @currentUser.present? %>
-  <a href="/favourites/index" class="icon-div">
+  <!-- <a href="/favourites/index" class="icon-div"> -->
     <div id="view-fav">
     <i class="fa fa-star faicon" aria-hidden="true"></i>
     <span class="icon-text">Favourites</span>
     </div>
-  </a>
+  <!-- </a> -->
 
   <a href="<%= user_path(@currentUser.id) %>" class="icon-div" id="user-id" data="<%= @currentUser.id %>">
     <div id="view-profile">

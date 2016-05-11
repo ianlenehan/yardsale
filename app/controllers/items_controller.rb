@@ -1,23 +1,6 @@
 class ItemsController < ApplicationController
 
-  # def index
-  #   session[:radius] += params[:km].to_i if params[:km].present?
-  #   session[:category] = params[:category] if params[:category].present?
-  #   user = @currentUser
-  #   if @currentUser.present? && user.current_latitude.to_s.length
-  #     lat = user.current_latitude
-  #     long = user.current_longitude
-  #     @items = Item.near([lat, long], session[:radius], :units => :km)
-  #   elsif @currentUser.present? && user.latitude.to_s.length
-  #     lat = user.latitude
-  #     long = user.longitude
-  #     @items = Item.near([lat, long], session[:radius], :units => :km)
-  #   else
-  #     @items = Item.all
-  #   end
-  #   render :index, :layout => ! params[:km].present?
-  #   render :index, :layout => ! params[:category].present?
-  # end
+
 
   def index
     session[:radius] += params[:km].to_i if params[:km].present?
@@ -33,15 +16,31 @@ class ItemsController < ApplicationController
       long = user.longitude
     end
 
-    if params[:category].present? && params[:category] != ""
+    if params[:favourites].present?
+      favourites = Favourite.where(:user_id => @currentUser.id)
+      favourites_item_ids = []
+      favourites.each do |f|
+        favourites_item_ids.push f.item_id
+      end
+      items = Item.where(:id => favourites_item_ids)
+      lat = user.latitude
+      long = user.longitude
+      @items = items.near([lat, long], 200, :units => :km)
+
+    elsif params[:category].present? && params[:category] != ""
       category = Category.where(:name => params[:category]).first
       items = Item.near([lat, long], session[:radius], :units => :km)
       @items = items.where(:category_id => category.id)
+
     elsif params[:category] == '' || !params[:category]
       @items = Item.near([lat, long], session[:radius], :units => :km)
     end
-    render :index, :layout => ! (params[:km].present? || params[:category].present? || params[:radius].present?)
+
+    render :index, :layout => ! (params[:km].present? || params[:category].present? || params[:radius].present? || params[:favourites])
   end
+
+
+
 
 
   def new

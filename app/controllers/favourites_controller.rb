@@ -1,6 +1,15 @@
 class FavouritesController < ApplicationController
+
   def index
-    @favourites = Favourite.all
+    favourites = Favourite.where(:user_id => @currentUser.id)
+    favourites_item_ids = []
+    favourites.each do |f|
+      favourites_item_ids.push f.item_id
+    end
+    items = Item.where(:id => favourites_item_ids)
+    lat = user.latitude
+    long = user.longitude
+    @items = items.near([lat, long], session[:radius], :units => :km)
   end
 
   def new
@@ -29,5 +38,15 @@ class FavouritesController < ApplicationController
   end
 
   def show
+    user = @currentUser
+    favourites = Favourite.where(:user_id => @currentUser.id)
+    favourites_item_ids = []
+    favourites.each do |f|
+      favourites_item_ids.push f.item_id
+    end
+    items = Item.where(:id => favourites_item_ids)
+    lat = user.latitude
+    long = user.longitude
+    @items = items.near([lat, long], session[:radius], :units => :km)
   end
 end

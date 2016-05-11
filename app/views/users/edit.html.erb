@@ -4,7 +4,7 @@
 <p>You must provide a username and default location in order to post items or to contact sellers.</p>
 <% end %>
 
-<%= form_for(@currentUser, :html => {:class=> "rails_form"}) do |f| %>
+<%= form_for(@currentUser, :html => {:class => "rails_form", "data-ajax" => false}) do |f| %>
 <p><%= f.label :name_first, 'First name' %>
   <%= f.text_field :name_first, :required => true %></p>
 

@@ -160,6 +160,18 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on('click', '#reset-km', function () {
+    console.log('reset km');
+    $.ajax({
+      type: "GET",
+      url: '/items',
+      data: { radius: 10 },
+    }).done( function (result) {
+      var updatedList = $(result)[6];
+      $('.items-list').html(updatedList);
+    });
+  });
+
 
 
 });

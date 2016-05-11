@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root :to =>'items#index'
-  get '/items/reset' => 'items#reset_km'
   get '/favourites/delete' => 'favourites#delete'
-
 
   resources :items
   resources :users

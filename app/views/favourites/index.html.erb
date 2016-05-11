@@ -1,2 +1,47 @@
-<h1>Favourites#index</h1>
-<p>Find me in app/views/favourites/index.html.erb</p>
+<div class="top-header">
+
+</div>
+
+<div class="top-div">
+
+</div>
+
+<%= select("category", "name", Category.all.collect(&:name), :prompt => "Filter by Category") %>
+
+<ul class="items-list">
+  <% @items.each do |item| %>
+  <li class="item-holder" id="<%= item.category.name %>" data="<%= item.id %>"><%= cl_image_tag item.image, :class => "thumb" %>
+
+    <%= link_to item_path(item), "data-transition" => "slide" do %>
+    <div class="item-overlay">
+      <h1 class="item-name"><%= item.name %></h1>
+      <span class="item-price">
+        <% if (item.price === 0 || item.price == nil) %>
+        Free
+      <% else %>
+        $<%= item.price %>
+        <% end %>
+        <% if (item.negotiable) %>
+        <span class="price-text">(neg)</span>
+        <% end %>
+        <% if (item.charity) %>
+        <span class="price-text">(or charity)</span>
+        <% end %>
+      </span>
+      <% if @currentUser.present? && @currentUser.latitude %>
+      <p class="item-description"><%= item.description %> (distance: <%= (item.distance * 1000).to_i %>m)</p>
+      <% end %>
+    </div>
+    <% end %>
+    <% if @currentUser.present? && item.favourites.where(:user_id => @currentUser.id).exists? %>
+    <img src="assets/favStar.png" class="fav magictime"></img>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<div id="km">
+
+<span id="add-km">Add 10 km</span>
+<%= link_to 'Reset KM', items_reset_path, id: "reset-km" %>
+
+</div>

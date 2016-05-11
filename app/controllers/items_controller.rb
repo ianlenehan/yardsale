@@ -1,26 +1,48 @@
 class ItemsController < ApplicationController
 
+  # def index
+  #   session[:radius] += params[:km].to_i if params[:km].present?
+  #   session[:category] = params[:category] if params[:category].present?
+  #   user = @currentUser
+  #   if @currentUser.present? && user.current_latitude.to_s.length
+  #     lat = user.current_latitude
+  #     long = user.current_longitude
+  #     @items = Item.near([lat, long], session[:radius], :units => :km)
+  #   elsif @currentUser.present? && user.latitude.to_s.length
+  #     lat = user.latitude
+  #     long = user.longitude
+  #     @items = Item.near([lat, long], session[:radius], :units => :km)
+  #   else
+  #     @items = Item.all
+  #   end
+  #   render :index, :layout => ! params[:km].present?
+  #   render :index, :layout => ! params[:category].present?
+  # end
+
   def index
     session[:radius] += params[:km].to_i if params[:km].present?
+    session[:radius] = 10 if params[:radius].present?
+    session[:category] = params[:category] if params[:category].present?
     user = @currentUser
+
     if @currentUser.present? && user.current_latitude.to_s.length
       lat = user.current_latitude
       long = user.current_longitude
-      @items = Item.near([lat, long], session[:radius], :units => :km)
     elsif @currentUser.present? && user.latitude.to_s.length
       lat = user.latitude
       long = user.longitude
-      @items = Item.near([lat, long], session[:radius], :units => :km)
-    else
-      @items = Item.all
     end
-    render :index, :layout => ! params[:km].present?
+
+    if params[:category].present? && params[:category] != ""
+      category = Category.where(:name => params[:category]).first
+      items = Item.near([lat, long], session[:radius], :units => :km)
+      @items = items.where(:category_id => category.id)
+    elsif params[:category] == '' || !params[:category]
+      @items = Item.near([lat, long], session[:radius], :units => :km)
+    end
+    render :index, :layout => ! (params[:km].present? || params[:category].present? || params[:radius].present?)
   end
 
-  def reset_km
-    session[:radius] = 10
-    redirect_to root_path
-  end
 
   def new
     if !@currentUser.name_first

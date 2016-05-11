@@ -6,7 +6,7 @@
 
 </div>
 
-<%= select("category", "name", Category.all.collect(&:name), :prompt => "Filter by Category") %>
+<%= select("category", "name", Category.all.collect(&:name), :include_blank => true, :prompt => "Filter by Category") %>
 
 <ul class="items-list">
   <% @items.each do |item| %>
@@ -42,6 +42,6 @@
 <div id="km">
 
 <span id="add-km">Add 10 km</span>
-<%= link_to 'Reset KM', items_reset_path, id: "reset-km" %>
+<span id="reset-km">Reset km</span>
 
 </div>

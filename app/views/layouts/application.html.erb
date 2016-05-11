@@ -36,12 +36,7 @@
     </div>
   </a>
 
-  <a href="" class="icon-div">
-    <div id="view-fav">
-    <i class="fa fa-star faicon" aria-hidden="true"></i>
-    <span class="icon-text">Favourites</span>
-    </div>
-  </a>
+
 
   <a href="<%= items_path %>" class="icon-div">
     <div id="view-items">
@@ -49,7 +44,15 @@
     <span class="icon-text">Items</span>
     </div>
   </a>
+
   <% if @currentUser.present? %>
+  <a href="/favourites/index" class="icon-div">
+    <div id="view-fav">
+    <i class="fa fa-star faicon" aria-hidden="true"></i>
+    <span class="icon-text">Favourites</span>
+    </div>
+  </a>
+
   <a href="<%= user_path(@currentUser.id) %>" class="icon-div" id="user-id" data="<%= @currentUser.id %>">
     <div id="view-profile">
     <i class="fa fa-user faicon" aria-hidden="true"></i>

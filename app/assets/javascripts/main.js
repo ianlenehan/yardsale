@@ -19,7 +19,7 @@ $(document).ready(function() {
   });
 
 
-  $(document).on('click', '#view-items', function() {
+  $(document).on('tap', '#view-items', function() {
     var link = window.location.href.substr(window.location.href.length - 5);
     if (link == 'items') {
       document.location.reload(true);
@@ -27,7 +27,7 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on('click', '#view-fav', function() {
+  $(document).on('tap', '#view-fav', function() {
     $.ajax({
       type: "GET",
       url: '/items',

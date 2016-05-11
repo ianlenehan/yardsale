@@ -86,14 +86,14 @@ var error = function(err) {
 $(document).ready(function () {
 
   // update current location in item view
-  $(document).on('click', '#update-location', function () {
+  $(document).on('tap', '#update-location', function () {
     $('.ui-page').append('<div id="location-saved"><i class="fa fa-refresh fa-spin fa-2x fa-fw margin-bottom"></i></div>');
     $('#location-saved').fadeIn();
     navigator.geolocation.getCurrentPosition(updateSuccess, error, options);
   });
 
   // update sample location in item view
-    $(document).on('click', '#sample-location', function (e) {
+    $(document).on('tap', '#sample-location', function (e) {
       e.preventDefault();
 
     var locData = {

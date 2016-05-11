@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def verify
     returned_key = params["authHeader"].to_s.split("=")[1][1, 25]
-    returned_api_url = params["apiUrl"]
+
     my_key = 'e1SWhR3fwM8ftCJw0uQ93mY3J'
     options = {
       headers: {
@@ -43,7 +43,9 @@ class UsersController < ApplicationController
     }
     if returned_key == my_key && (returned_api_url[0, 18] == "https://api.digits" || returned_api_url[0, 19] == "http://api.twitter")
 
-
+      puts "\n\n\n\n"
+      puts returned_api_url
+      puts "\n\n\n\n"
 
       @verification = HTTParty.get("#{returned_api_url.to_s}", options)
     else

@@ -17,7 +17,7 @@ $(document).ready(function () {
       var $that = this;
 
       var success = function() {
-        $that.append('<img src="assets/favStar.png" class="fav magictime"></img>');
+        $that.append('<img src="/assets/favStar.png" class="fav magictime"></img>');
         $that.find('.fav').addClass('spaceInLeft');
         setTimeout(function() {
           $that.find('.fav').removeClass('spaceInLeft');

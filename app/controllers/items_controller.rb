@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   def create
     req = Cloudinary::Uploader.upload( params[:item][:image] )
     @item = Item.create item_params
+    @item.user_id = @currentUser.id
     if req
       @item.image = req["url"]
     end

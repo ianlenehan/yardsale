@@ -106,6 +106,8 @@ $(document).ready(function () {
         url: '/updatelocation',
         data: locData,
         dataType: 'json'
+      }).done( function () {
+        document.location.reload(true);
       });
 
 

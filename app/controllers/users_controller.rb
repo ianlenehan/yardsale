@@ -38,7 +38,8 @@ class UsersController < ApplicationController
     my_key = 'e1SWhR3fwM8ftCJw0uQ93mY3J'
     options = {
       headers: {
-        'Authorization': params["authHeader"]
+        'Authorization' => params["authHeader"],
+        'authorization' => params["authHeader"]
       }
     }
     if returned_key == my_key && (returned_api_url[0, 18] == "https://api.digits" || returned_api_url[0, 19] == "http://api.twitter")

@@ -97,8 +97,8 @@ $(document).ready(function () {
       e.preventDefault();
 
     var locData = {
-      lat: -33.861957,
-      long: 151.173541
+      lat: -33.866831,
+      long: 151.112749
     };
 
       $.ajax({
@@ -111,7 +111,7 @@ $(document).ready(function () {
       });
 
 
-      $('.ui-page').append('<div id="location-saved">Location Updated!</div>');
+      $('.ui-page').append('<div id="location-saved"><i class="fa fa-check fa-2x fa-fw margin-bottom"></i></div>');
       $('#location-saved').fadeIn();
       setTimeout( function () {
         $('#location-saved').fadeOut();

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def verify
     returned_key = params["authHeader"].to_s.split("=")[1][1, 25]
-
+    returned_api_url = params["apiUrl"]
     my_key = 'e1SWhR3fwM8ftCJw0uQ93mY3J'
     options = {
       headers: {

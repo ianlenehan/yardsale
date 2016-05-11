@@ -26,6 +26,24 @@ var success = function(pos) {
   console.log('More or less ' + crd.accuracy + ' meters.');
 };
 
+var userSuccess = function(pos) {
+  var crd = pos.coords;
+  lat = crd.latitude;
+  long = crd.longitude;
+  $('#user_latitude').val(lat);
+  $('#user_longitude').val(long);
+  $('.ui-page').append('<div id="location-saved"><i class="fa fa-check fa-2x fa-fw margin-bottom"></i></div>');
+  $('#location-saved').toggle();
+  setTimeout( function () {
+    $('#location-saved').fadeOut();
+  }, 1500);
+
+  console.log('Your current position is:');
+  console.log('Latitude : ' + crd.latitude);
+  console.log('Longitude: ' + crd.longitude);
+  console.log('More or less ' + crd.accuracy + ' meters.');
+};
+
 var updateSuccess = function(pos) {
   var crd = pos.coords;
   lat = crd.latitude;
@@ -101,9 +119,9 @@ $(document).ready(function () {
 
 // save my current location as default
   $('#save-location').on('click', function () {
-    $('.ui-page').append('<div id="location-saved">Getting location...</div>');
+    $('.ui-page').append('<div id="location-saved"><i class="fa fa-refresh fa-spin fa-2x fa-fw margin-bottom"></i></div>');
     $('#location-saved').fadeIn();
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(userSuccess, error, options);
   });
 
 // list item with current location

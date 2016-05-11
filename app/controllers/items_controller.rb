@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
+
   def index
     session[:radius] += params[:km].to_i if params[:km].present?
     user = @currentUser
-    if @currentUser
+    if user.current_latitude
       lat = user.current_latitude
       long = user.current_longitude
       @items = Item.near([lat, long], session[:radius], :units => :km)

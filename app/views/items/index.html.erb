@@ -28,7 +28,7 @@
         <span class="price-text">(or charity)</span>
         <% end %>
       </span>
-      <% if @currentUser.present? %>
+      <% if @currentUser.present? && @currentUser.latitude %>
       <p class="item-description"><%= item.description %> (distance: <%= (item.distance * 1000).to_i %>m)</p>
       <% end %>
     </div>

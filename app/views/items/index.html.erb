@@ -10,7 +10,7 @@
 
 <ul class="items-list">
   <% @items.each do |item| %>
-  <li class="item-holder" id="<%= item.category.name %>" data="<%= item.id %>"><%= image_tag item.image, :class => "thumb" %>
+  <li class="item-holder" id="<%= item.category.name %>" data="<%= item.id %>"><%= cl_image_tag item.image, :class => "thumb" %>
 
     <%= link_to item_path(item), "data-transition" => "slide" do %>
     <div class="item-overlay">

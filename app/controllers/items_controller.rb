@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
       lat = user.current_latitude
       long = user.current_longitude
       @items = Item.near([lat, long], session[:radius], :units => :km)
+    elsif user.latitude
+      lat = user.latitude
+      long = user.longitude
+      @items = Item.near([lat, long], session[:radius], :units => :km)
     else
       @items = Item.all
     end

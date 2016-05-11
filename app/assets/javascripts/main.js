@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function () {
+// $(document).on('pageinit', function () {
 
   $('.fav').on('click', function() {
     $(this).attr('src', '/assets/favStar.png');
@@ -64,7 +65,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#category_name').on('change', function() {
+  $(document).on('change', '#category_name', function() {
     $('.item-holder').show();
     $category = $(this).val();
     if ($category !== '') {
@@ -72,11 +73,11 @@ $(document).ready(function() {
     }
   });
 
-  $(window).on('scroll', function() {
+  $(document).on('scroll', window, function() {
     $('.footer-nav').fadeOut();
   });
 
-  $(window).on('scroll', function() {
+  $(document).on('scroll', window, function() {
     clearTimeout($.data(this, 'scrollTimer'));
     $.data(this, 'scrollTimer', setTimeout(function() {
       $('.footer-nav').fadeIn();

@@ -86,14 +86,14 @@ var error = function(err) {
 $(document).ready(function () {
 
   // update current location in item view
-  $('#update-location').on('click', function () {
+  $(document).on('click', '#update-location', function () {
     $('.ui-page').append('<div id="location-saved"><i class="fa fa-refresh fa-spin fa-2x fa-fw margin-bottom"></i></div>');
     $('#location-saved').fadeIn();
     navigator.geolocation.getCurrentPosition(updateSuccess, error, options);
   });
 
   // update sample location in item view
-    $('#sample-location').on('click', function (e) {
+    $(document).on('click', '#sample-location', function (e) {
       e.preventDefault();
 
     var locData = {
@@ -118,14 +118,14 @@ $(document).ready(function () {
     });
 
 // save my current location as default
-  $('#save-location').on('click', function () {
+  $(document).on('click', '#save-location', function () {
     $('.ui-page').append('<div id="location-saved"><i class="fa fa-refresh fa-spin fa-2x fa-fw margin-bottom"></i></div>');
     $('#location-saved').fadeIn();
     navigator.geolocation.getCurrentPosition(userSuccess, error, options);
   });
 
 // list item with current location
-  $('#current-location').on('click', function (e) {
+  $(document).on('click', '#current-location', function (e) {
     e.preventDefault();
     $('.ui-page').append('<div id="location-saved">Getting location...</div>');
     $('#location-saved').fadeIn();
@@ -133,7 +133,7 @@ $(document).ready(function () {
   });
 
 // list item with user's default location
-  $('#default-location').on('click', function (e) {
+  $(document).on('click', '#default-location', function (e) {
     e.preventDefault();
     var lat = $('#hidden-lat').text();
     var long = $('#hidden-long').text();
@@ -146,14 +146,13 @@ $(document).ready(function () {
     }, 1500);
   });
 
-  $('#add-km').click( function () {
+  $(document).on('click', '#add-km', function () {
     console.log('add km');
     $.ajax({
       type: "GET",
       url: '/items',
       data: { km: 10 },
     }).done( function (result) {
-      document.location.reload(true);
       var updatedList = $(result)[6];
       $('.items-list').html(updatedList);
     });

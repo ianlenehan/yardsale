@@ -48,6 +48,20 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def close
+    item = Item.find params[:id]
+    item.closed = Date.today
+    item.save
+    redirect_to items_path
+  end
+
+  def reopen
+    item = Item.find params[:id]
+    item.closed = nil
+    item.save
+    redirect_to item_path(item)
+  end
+
   def new
     if !@currentUser.name_first
       redirect_to edit_user_path(@currentUser)

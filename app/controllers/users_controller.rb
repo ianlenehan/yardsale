@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = @currentUser
+    @items = Item.where(:user_id => @user.id)
   end
 
   def locate

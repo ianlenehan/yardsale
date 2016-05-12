@@ -13,6 +13,7 @@
 
 <ul class="items-list">
   <% @items.each do |item| %>
+  <% if !item.closed %>
   <li class="item-holder" id="<%= item.category.name %>" data="<%= item.id %>"><%= cl_image_tag item.image, :class => "thumb" %>
 
     <%= link_to item_path(item), "data-transition" => "slide" do %>
@@ -56,6 +57,8 @@
 
   </li>
   <% end %>
+  <% end %>
+
 </ul>
 <div id="km">
 

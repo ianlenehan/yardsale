@@ -37,11 +37,20 @@
       <a class="button-link" href="mailto:<%= @item.user.email %>?subject=<%= @item.name %> listed on Yard Sale"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>
 
       <% if @currentUser.id == @item.user_id || @currentUser.admin %>
-        <p>Close Item</p>
+      <% if @item.closed == nil %>
+        <%= link_to 'Close Item', close_item_path, :class => "ui-btn ui-corner-all" %>
+        <% else %>
+        <%= link_to 'Reopen Item', open_item_path, :class => "ui-btn ui-corner-all" %>
+        <% end %>
         <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all', "data-transition" => "slide" %>
       <% end %>
   <% else %>
     <h3>Please log in from the previous page if you wish to contact the seller.</h3>
+  <% end %>
+<% if @item.closed != nil %>
+  <div id="closed">
+    <%= image_tag 'closed.png', :id => 'closed-image' %>
+  </div>
   <% end %>
 
 </div>

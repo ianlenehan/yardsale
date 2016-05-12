@@ -156,8 +156,10 @@ $(document).ready(function () {
       type: "GET",
       url: '/items',
       data: { km: 10 },
-    }).done( function (result) {
-      var updatedList = $(result)[6];
+    }).done(function(result) {
+      var updatedList = $(result).filter(function() {
+        return $(this).children("li").length !== 0;
+      });
       $('.items-list').html(updatedList);
     });
   });
@@ -168,8 +170,10 @@ $(document).ready(function () {
       type: "GET",
       url: '/items',
       data: { radius: 10 },
-    }).done( function (result) {
-      var updatedList = $(result)[6];
+    }).done(function(result) {
+      var updatedList = $(result).filter(function() {
+        return $(this).children("li").length !== 0;
+      });
       $('.items-list').html(updatedList);
     });
   });

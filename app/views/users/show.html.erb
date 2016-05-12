@@ -10,7 +10,7 @@
 <p>Email: <%= @currentUser.email %> </p>
 <p>Default Location Near: <%= @currentUser.default_location %></p>
 
-<%= link_to "Edit Profile", edit_user_path, :class => 'ui-btn ui-corner-all' %>
+<%= link_to "Edit Profile", edit_user_path, :class => 'ui-btn ui-corner-all', "data-transition" => "slide" %>
 <%= link_to "Logout", logout_path, :method => :delete, :class => 'ui-btn ui-corner-all' %>
 
 </div>

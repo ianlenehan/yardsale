@@ -22,6 +22,7 @@ li {
 }
 
 .item-overlay {
+  font-family: Helvetica;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   bottom: 6px;
@@ -29,6 +30,11 @@ li {
   padding-bottom: 5px;
   z-index: 1;
   width: 100vw;
+
+  h1 {
+    text-align: left;
+    font-family: Helvetica !important;
+  }
 }
 
 .items-list {

@@ -38,7 +38,7 @@
 
       <% if @currentUser.id == @item.user_id %>
         <p>Close Item</p>
-        <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all' %>
+        <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all', "data-transition" => "slide" %>
       <% end %>
   <% else %>
     <h3>Please log in from the previous page if you wish to contact the seller.</h3>

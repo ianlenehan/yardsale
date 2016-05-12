@@ -36,7 +36,7 @@
   <% if @currentUser.present? && @item.user.email %>
       <a class="button-link" href="mailto:<%= @item.user.email %>?subject=<%= @item.name %> listed on Yard Sale"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>
 
-      <% if @currentUser.id == @item.user_id %>
+      <% if @currentUser.id == @item.user_id || @currentUser.admin %>
         <p>Close Item</p>
         <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all', "data-transition" => "slide" %>
       <% end %>

@@ -21,5 +21,6 @@ class Item < ActiveRecord::Base
   has_many :comments
   has_many :favourites
   geocoded_by :latitude
-  # after_validation :geocode, :if => :address_changed?
+  reverse_geocoded_by :latitude, :longitude, :address => :location
+  after_validation :reverse_geocode, :if => :latitude_changed?
 end

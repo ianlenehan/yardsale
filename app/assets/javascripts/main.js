@@ -10,7 +10,9 @@ $(document).ready(function() {
       },
     }).done(function(result) {
       var updatedList = $(result).filter(function() {
+        console.log($(this));
         return $(this).children("li").length !== 0;
+
       });
       // var updatedList = $(result).eq(6);
       $('.items-list').html(updatedList);

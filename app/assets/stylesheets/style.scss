@@ -21,14 +21,15 @@ li {
   position: absolute;
   bottom: 6px;
   padding-left: 10px;
+  padding-bottom: 5px;
   z-index: 1;
   width: 100vw;
-  // display: block;
 }
 
 .items-list {
   list-style: none;
   padding-left: 0;
+  margin-top: -0px;
   align-items: baseline;
   display: block;
 }
@@ -74,11 +75,11 @@ li {
   position: absolute;
   top: 22px;
   right: 25px;
-  color: grey;
+  color: black;
   font-size: 10px;
   z-index: 6;
   text-align: center;
-  box-shadow: none;
+  text-shadow: none;
   display: none;
 }
 
@@ -183,4 +184,38 @@ li {
   text-decoration: none !important;
   font-weight: normal !important;
   color: inherit !important;
+}
+
+.top-header {
+  width: 100%;
+  background-attachment: fixed;
+  background-image: image-url("yardsale.png");
+  top: 0px;
+  height: 40vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0;
+  // z-index: -1
+}
+
+.distance-div {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(117,191,59,0.81);
+  span {
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    text-shadow: none;
+    transform: translate(-50%, -50%);
+    position:absolute;
+    top: 50%;
+    left: 50%;
+  }
+
 }

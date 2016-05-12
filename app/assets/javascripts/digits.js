@@ -64,6 +64,6 @@ $(document).ready(function () {
     Digits.init({ consumerKey: 'e1SWhR3fwM8ftCJw0uQ93mY3J' });
   });
 
-  $('body').on('click', '#login', onLoginButtonClick);
+  $('body').on('tap', '#login', onLoginButtonClick);
 
 });

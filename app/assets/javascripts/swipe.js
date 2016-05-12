@@ -29,12 +29,6 @@
 
 $(document).on('pagecreate', function() {
 
-  $('.fav').on('click', function() {
-    $(this).attr('src', '/assets/favStar.png');
-  });
-
-
-
   $('.item-holder').swipe({
 
     swipeLeft: function() {

@@ -4,7 +4,7 @@
   <p><% if (@item.price === 0 || @item.price == nil) %>
   Free
   <% else %>
-  $<%= @item.price %>
+  <%= number_to_currency(@item.price) %>
   <% end %></p>
 
   <% if @item.negotiable %>
@@ -17,18 +17,26 @@
 
   <p><%= @item.description %></p>
 
+  <p>Located Near: <%= @item.location %></p>
+
   <%= image_tag @item.image, :class=> 'edit-image' %>
   <% if @item.favourites.length == 0 %>
-    <p>Nodoby have favourited this item yet.</p>
+    <p>Nodoby has favourited this item yet.</p>
   <% elsif @item.favourites.length == 1 %>
     <p><%= @item.favourites.length %> person has favourited this item.</p>
   <% else %>
     <p><%= @item.favourites.length %> people have favourited this item.</p>
   <% end %>
-  <a class="button-link" href="mailto:<%= @item.user.email %>"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>
 
-  <% if @currentUser.id == @item.user_id %>
-  <p>Close Item</p>
-  <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all' %>
+  <% if @currentUser.present? %>
+      <a class="button-link" href="mailto:<%= @item.user.email %>?subject=<%= @item.name %> listed on Yard Sale"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>
+
+      <% if @currentUser.id == @item.user_id %>
+        <p>Close Item</p>
+        <%= link_to 'Edit Item', edit_item_path, :class => 'ui-btn ui-corner-all' %>
+      <% end %>
+  <% else %>
+    <h3>Please log in from the previous page if you wish to contact the seller.</h3>
   <% end %>
+  
 </div>

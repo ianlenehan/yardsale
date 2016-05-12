@@ -2,9 +2,12 @@
 
 </div>
 
-<div class="top-div">
-
-</div>
+  <% if @currentUser.present? %>
+  <%= button_to(@currentUser.phone, user_path(@currentUser.id), :method => :get, :class => 'ui-mini')  %>
+  <% else %>
+  <button class="ui-mini" id="login">Login / Signup</button>
+  <% end %>
+  <div class="my-digits-container"></div>
 
 <%= select("category", "name", Category.all.collect(&:name), :include_blank => true, :prompt => "Filter by Category") %>
 
@@ -19,7 +22,7 @@
         <% if (item.price === 0 || item.price == nil) %>
         Free
       <% else %>
-        $<%= item.price %>
+        <%= number_to_currency(item.price) %>
         <% end %>
         <% if (item.negotiable) %>
         <span class="price-text">(neg)</span>
@@ -28,9 +31,7 @@
         <span class="price-text">(or charity)</span>
         <% end %>
       </span>
-      <% if @currentUser.present? && @currentUser.latitude %>
-      <p class="item-description"><%= item.description %> (distance: <%= (item.distance * 1000).to_i %>m)</p>
-      <% end %>
+      <p class="item-description"><%= item.description %> </p>
     </div>
     <% end %>
     <% if @currentUser.present? && item.favourites.where(:user_id => @currentUser.id).exists? %>
@@ -42,6 +43,12 @@
     <% if item.favourites.length > 0 %>
     <div class="fav-count"><%= item.favourites.length %></div>
     <% end %>
+    <% if @currentUser.present? && @currentUser.latitude %>
+    <div class="distance-div">
+      <span><%= number_to_human((item.distance * 1000).to_i, units: {unit: 'm', thousand: 'km'}) %></span>
+    </div>
+    <% end %>
+
   </li>
   <% end %>
 </ul>

@@ -30,6 +30,7 @@ var userSuccess = function(pos) {
   var crd = pos.coords;
   lat = crd.latitude;
   long = crd.longitude;
+  loc =
   $('#user_latitude').val(lat);
   $('#user_longitude').val(long);
   $('.ui-page').append('<div id="location-saved"><i class="fa fa-check fa-2x fa-fw margin-bottom"></i></div>');
@@ -41,6 +42,7 @@ var userSuccess = function(pos) {
   console.log('Your current position is:');
   console.log('Latitude : ' + crd.latitude);
   console.log('Longitude: ' + crd.longitude);
+  console.log('Default loc: ' + crd.address);
   console.log('More or less ' + crd.accuracy + ' meters.');
 };
 
@@ -120,14 +122,14 @@ $(document).ready(function () {
     });
 
 // save my current location as default
-  $(document).on('click', '#save-location', function () {
+  $(document).on('tap', '#save-location', function () {
     $('.ui-page').append('<div id="location-saved"><i class="fa fa-refresh fa-spin fa-2x fa-fw margin-bottom"></i></div>');
     $('#location-saved').fadeIn();
     navigator.geolocation.getCurrentPosition(userSuccess, error, options);
   });
 
 // list item with current location
-  $(document).on('click', '#current-location', function (e) {
+  $(document).on('tap', '#current-location', function (e) {
     e.preventDefault();
     $('.ui-page').append('<div id="location-saved">Getting location...</div>');
     $('#location-saved').fadeIn();
@@ -135,7 +137,7 @@ $(document).ready(function () {
   });
 
 // list item with user's default location
-  $(document).on('click', '#default-location', function (e) {
+  $(document).on('tap', '#default-location', function (e) {
     e.preventDefault();
     var lat = $('#hidden-lat').text();
     var long = $('#hidden-long').text();
@@ -148,7 +150,7 @@ $(document).ready(function () {
     }, 1500);
   });
 
-  $(document).on('click', '#add-km', function () {
+  $(document).on('tap', '#add-km', function () {
     console.log('add km');
     $.ajax({
       type: "GET",
@@ -160,7 +162,7 @@ $(document).ready(function () {
     });
   });
 
-  $(document).on('click', '#reset-km', function () {
+  $(document).on('tap', '#reset-km', function () {
     console.log('reset km');
     $.ajax({
       type: "GET",

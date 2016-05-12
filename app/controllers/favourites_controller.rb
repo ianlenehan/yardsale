@@ -1,15 +1,14 @@
 class FavouritesController < ApplicationController
-
   def index
-    favourites = Favourite.where(:user_id => @currentUser.id)
+    favourites = Favourite.where(user_id: @currentUser.id)
     favourites_item_ids = []
     favourites.each do |f|
       favourites_item_ids.push f.item_id
     end
-    items = Item.where(:id => favourites_item_ids)
+    items = Item.where(id: favourites_item_ids)
     lat = user.latitude
     long = user.longitude
-    @items = items.near([lat, long], session[:radius], :units => :km)
+    @items = items.near([lat, long], session[:radius], units: :km)
   end
 
   def new
@@ -17,10 +16,12 @@ class FavouritesController < ApplicationController
       format.html {}
       format.json { render json: @response }
     end
-    favourite = Favourite.new
-    favourite.user_id = params[:userID]
-    favourite.item_id = params[:itemID]
-    favourite.save
+    unless Favourite.where(user_id: params[:userID], item_id: params[:itemID]).exists?
+      favourite = Favourite.new
+      favourite.user_id = params[:userID]
+      favourite.item_id = params[:itemID]
+      favourite.save
+    end
   end
 
   def delete
@@ -30,7 +31,7 @@ class FavouritesController < ApplicationController
     end
     user_id = params[:userID]
     item_id = params[:itemID]
-    favourite = Favourite.where(:user_id => user_id, :item_id => item_id).first
+    favourite = Favourite.where(user_id: user_id, item_id: item_id).first
     favourite.destroy
   end
 
@@ -38,15 +39,5 @@ class FavouritesController < ApplicationController
   end
 
   def show
-    user = @currentUser
-    favourites = Favourite.where(:user_id => @currentUser.id)
-    favourites_item_ids = []
-    favourites.each do |f|
-      favourites_item_ids.push f.item_id
-    end
-    items = Item.where(:id => favourites_item_ids)
-    lat = user.latitude
-    long = user.longitude
-    @items = items.near([lat, long], session[:radius], :units => :km)
   end
 end

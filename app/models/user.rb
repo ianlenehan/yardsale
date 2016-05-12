@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favourites
   has_many :items
+  reverse_geocoded_by :latitude, :longitude, :address => :default_location
+  after_validation :reverse_geocode, :if => :latitude_changed?
 end

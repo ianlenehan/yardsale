@@ -9,14 +9,9 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 </head>
 <body>
-  <% if @currentUser.present? %>
-  <%= button_to(@currentUser.phone, user_path(@currentUser.id), :method => :get)  %>
-  <% else %>
-  <button id="login">Login / Signup</button>
-  <% end %>
-  <div class="my-digits-container"></div>
-<%= yield %>
 
+<%= yield %>
+  <% if @currentUser.present? %>
 <footer class="footer-nav" data-role="none">
 
   <div class="icon-div" id="update-location">
@@ -36,32 +31,29 @@
     </div>
   </a>
 
-
-
   <a href="<%= items_path %>" class="icon-div">
-    <div id="view-items">
+    <div class="icon-div" id="view-items">
     <i class="fa fa-list-ul faicon" aria-hidden="true"></i>
     <span class="icon-text">Items</span>
     </div>
   </a>
 
-  <% if @currentUser.present? %>
-  <!-- <a href="/favourites/index" class="icon-div"> -->
-    <div id="view-fav">
+
+    <div class="icon-div" id="view-fav">
     <i class="fa fa-star faicon" aria-hidden="true"></i>
     <span class="icon-text">Favourites</span>
     </div>
-  <!-- </a> -->
 
   <a href="<%= user_path(@currentUser.id) %>" class="icon-div" id="user-id" data="<%= @currentUser.id %>">
-    <div id="view-profile">
+    <div class="icon-div" id="view-profile">
     <i class="fa fa-user faicon" aria-hidden="true"></i>
     <span class="icon-text">Profile</span>
     </div>
-    <% end %>
   </a>
 
+
 </footer>
+<% end %>
 </body>
 
 </html>

@@ -35,7 +35,7 @@
     </div>
     <% end %>
     <% if @currentUser.present? && item.favourites.where(:user_id => @currentUser.id).exists? %>
-    <img src="assets/favStar.png" class="fav magictime"></img>
+    <img src="favStar.png" class="fav magictime"></img>
     <script>
       $('.fav-count').fadeIn();
     </script>

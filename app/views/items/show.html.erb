@@ -16,7 +16,7 @@
   <% end %>
 
   <p><%= @item.description %></p>
-<% if @item.location.exists? %>
+<% if @item.location %>
   <p>Located Near: <%= @item.location %></p>
   <% end %>
 

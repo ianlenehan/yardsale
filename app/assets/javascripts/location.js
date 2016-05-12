@@ -94,13 +94,13 @@ $(document).ready(function () {
     navigator.geolocation.getCurrentPosition(updateSuccess, error, options);
   });
 
-  // update sample location in item view
+  // update sample location in item view to Pyrmont
     $(document).on('tap', '#sample-location', function (e) {
       e.preventDefault();
 
     var locData = {
-      lat: -33.866831,
-      long: 151.112749
+      lat: -33.868976,
+      long: 151.194236
     };
 
       $.ajax({

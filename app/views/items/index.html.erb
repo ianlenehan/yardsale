@@ -24,18 +24,11 @@
       <% else %>
         <%= number_to_currency(item.price) %>
         <% end %>
-        <% if (item.negotiable) %>
-        <span class="price-text">(neg)</span>
-        <% end %>
-        <% if (item.charity) %>
-        <span class="price-text">(or charity)</span>
-        <% end %>
       </span>
       <p class="item-description"><%= item.description %> </p>
     </div>
     <% end %>
     <% if @currentUser.present? && item.favourites.where(:user_id => @currentUser.id).exists? %>
-    <!-- <img src="/assets/favStar.png" class="fav magictime"></img> -->
     <%= image_tag 'favStar.png', :class => 'fav magictime' %>
     <script>
       $('.fav-count').fadeIn();
@@ -47,6 +40,17 @@
     <% if @currentUser.present? && @currentUser.latitude %>
     <div class="distance-div">
       <span><%= number_to_human((item.distance * 1000).to_i, units: {unit: 'm', thousand: 'km'}) %></span>
+    </div>
+    <% end %>
+    <% if (item.negotiable) %>
+      <div class="neg-div">
+        <span>$neg</span>
+      </div>
+    <% end %>
+
+    <% if (item.charity) %>
+    <div class="charity-div">
+      <span>charity</span>
     </div>
     <% end %>
 

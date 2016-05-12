@@ -40,7 +40,8 @@ $(document).on('pagecreate', function() {
       var $that = this;
 
       var success = function() {
-        $that.append('<img src="/assets/favStar.png" class="fav magictime"></img>');
+        var $favStar = $('#favStar').clone().attr('id', '').addClass('fav magictime').removeClass('invisible');
+        $that.append($favStar);
         $that.find('.fav').addClass('spaceInLeft');
         setTimeout(function() {
           $that.find('.fav-count').fadeIn();

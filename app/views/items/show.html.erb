@@ -16,8 +16,9 @@
   <% end %>
 
   <p><%= @item.description %></p>
-
+<% if @item.location.exists? %>
   <p>Located Near: <%= @item.location %></p>
+  <% end %>
 
   <%= image_tag @item.image, :class=> 'edit-image' %>
   <% if @item.favourites.length == 0 %>
@@ -38,5 +39,5 @@
   <% else %>
     <h3>Please log in from the previous page if you wish to contact the seller.</h3>
   <% end %>
-  
+
 </div>

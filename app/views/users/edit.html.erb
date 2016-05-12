@@ -14,8 +14,8 @@
 
   <input id="save-location" type="button" value="Save My Location">
 
-  <%= f.text_field :latitude, :class => 'lat-input' %></p>
-  <%= f.text_field :longitude, :class => 'long-input' %></p>
+  <%= f.text_field :latitude, :class => 'lat-input', :required => true %></p>
+  <%= f.text_field :longitude, :class => 'long-input', :required => true %></p>
 
   <p><%= f.label :email %>
   <%= f.email_field :email %></p>

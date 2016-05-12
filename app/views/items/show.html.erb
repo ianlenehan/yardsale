@@ -1,6 +1,7 @@
 <div class="ui-body ui-body-a u-corner-al">
   <h1><%= @item.name %></h1>
 
+<% if @item.category.name != 'Yard Sale' %>
   <p><% if (@item.price === 0 || @item.price == nil) %>
   Free
   <% else %>
@@ -16,9 +17,11 @@
   <% end %>
 
   <p><%= @item.description %></p>
-<% if @item.location %>
-  <p>Located Near: <%= @item.location %></p>
+  <% if @item.location %>
+    <p>Located Near: <%= @item.location %></p>
   <% end %>
+<% end %>
+
 
   <%= image_tag @item.image, :class=> 'edit-image' %>
   <% if @item.favourites.length == 0 %>
@@ -28,6 +31,7 @@
   <% else %>
     <p><%= @item.favourites.length %> people have favourited this item.</p>
   <% end %>
+
 
   <% if @currentUser.present? && @item.user.email %>
       <a class="button-link" href="mailto:<%= @item.user.email %>?subject=<%= @item.name %> listed on Yard Sale"><p class="ui-btn ui-corner-all">Contact Item Owner</p></a>

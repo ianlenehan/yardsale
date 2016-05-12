@@ -1,5 +1,6 @@
 <h1>Users</h1>
 
 <% @users.each do |user| %>
-<p><%= user.name_first %> <%= user.name_last %></p>
+<p>Phone: <%= user.phone %>, Name: <%= user.name_first %> <%= user.name_last %> <%= link_to 'Edit User', user_path(user) %></p>
+
 <% end %>

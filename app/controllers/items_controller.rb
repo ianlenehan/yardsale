@@ -44,6 +44,10 @@ class ItemsController < ApplicationController
     render :index, layout: ! (params[:km].present? || params[:category].present? || params[:radius].present? || params[:favourites].present?)
   end
 
+  def admin
+    @items = Item.all
+  end
+
   def new
     if !@currentUser.name_first
       redirect_to edit_user_path(@currentUser)

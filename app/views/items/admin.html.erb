@@ -1,0 +1,7 @@
+<h1>Items Admin</h1>
+
+<ul>
+  <% @items.each do |item| %>
+  <li><%= item.id %> | Name: <%= item.name %> | Owner: <%= item.user.name_first %> <%= item.user.name_last %> <%= link_to 'Edit Item', item_path(item) %></li>
+  <% end %>
+</ul>

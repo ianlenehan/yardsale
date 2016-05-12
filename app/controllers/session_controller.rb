@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     user = User.where(:phone => params[:phone]).first
     if user.present?
       session[:user_id] = user.id
-      session[:radius] = 10
+      session[:radius] = 5
       session[:category] = nil
       redirect_to root_path
     else
@@ -17,7 +17,7 @@ class SessionController < ApplicationController
         puts newUser.error
       end
       session[:user_id] = newUser.id
-      session[:radius] = 10
+      session[:radius] = 5
       session[:category] = nil
       redirect_to root_path
     end

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     session[:radius] += params[:km].to_i if params[:km].present?
-    session[:radius] = 10 if params[:radius].present?
+    session[:radius] = 5 if params[:radius].present?
     session[:category] = params[:category] if params[:category].present?
     user = @currentUser
 

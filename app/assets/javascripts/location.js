@@ -155,7 +155,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url: '/items',
-      data: { km: 10 },
+      data: { km: 5 },
     }).done(function(result) {
       var updatedList = $(result).filter(function() {
         return $(this).children("li").length !== 0;
@@ -169,7 +169,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url: '/items',
-      data: { radius: 10 },
+      data: { radius: 5 },
     }).done(function(result) {
       var updatedList = $(result).filter(function() {
         return $(this).children("li").length !== 0;

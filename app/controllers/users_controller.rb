@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     user = @currentUser
     user.photo = req["url"] if req
     user.update user_params
+    user.current_latitude = user.latitude
+    user.current_longitude = user.longitude
+    user.save
     redirect_to user_path
   end
 

@@ -19,7 +19,7 @@ class SessionController < ApplicationController
       session[:user_id] = newUser.id
       session[:radius] = 5
       session[:category] = nil
-      redirect_to root_path
+      redirect_to user_path(newUser)
     end
   end
 

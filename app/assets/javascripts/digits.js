@@ -17,7 +17,6 @@ $(document).ready(function () {
 /* Launch the Login to Digits flow. */
 var onLoginButtonClick = function (event){
   console.log('clicked');
-  // document.getElementById('login').innerHTML = 'Logging In...';
   removeButton();
   Digits.embed({
     phoneNumber: '+61',

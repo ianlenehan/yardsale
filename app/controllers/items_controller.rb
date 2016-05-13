@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
       long = user.longitude
       @items = items.near([lat, long], 200, units: :km)
 
-
     elsif params[:category].present? && params[:category] != ''
       puts 'gone to category'
       category = Category.where(name: params[:category]).first

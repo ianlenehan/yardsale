@@ -94,32 +94,53 @@ $(document).ready(function () {
     navigator.geolocation.getCurrentPosition(updateSuccess, error, options);
   });
 
-  // update sample location in item view to Pyrmont
-    $(document).on('tap', '#sample-location', function (e) {
-      e.preventDefault();
+  // update location in item view to saved default location
+  $(document).on('tap', '#my-default-location', function (e) {
+    e.preventDefault();
+    console.log('getting default location');
 
-    var locData = {
-      lat: -33.868976,
-      long: 151.194236
-    };
+      var onSuccess = function () {
+          document.location.reload(true);
+      };
 
-      $.ajax({
-        type: "POST",
-        url: '/updatelocation',
-        data: locData,
-        dataType: 'json'
-      }).done( function () {
-        document.location.reload(true);
-      });
+      var locData = {
+        lat: 'default'
+      };
 
+        $.ajax({
+          type: "POST",
+          url: '/updatelocation',
+          data: locData,
+          success: onSuccess,
+          dataType: 'json'
+        });
+  });
 
-      $('.ui-page').append('<div id="location-saved"><i class="fa fa-check fa-2x fa-fw margin-bottom"></i></div>');
-      $('#location-saved').fadeIn();
-      setTimeout( function () {
-        $('#location-saved').fadeOut();
-        document.location.reload(true);
-      }, 1500);
-    });
+    // $(document).on('tap', '#my-default-location', function (e) {
+    //   e.preventDefault();
+    //
+    // var locData = {
+    //   lat: -33.868976,
+    //   long: 151.194236
+    // };
+    //
+    //   $.ajax({
+    //     type: "POST",
+    //     url: '/updatelocation',
+    //     data: locData,
+    //     dataType: 'json'
+    //   }).done( function () {
+    //     document.location.reload(true);
+    //   });
+    //
+    //
+    //   $('.ui-page').append('<div id="location-saved"><i class="fa fa-check fa-2x fa-fw margin-bottom"></i></div>');
+    //   $('#location-saved').fadeIn();
+    //   setTimeout( function () {
+    //     $('#location-saved').fadeOut();
+    //     document.location.reload(true);
+    //   }, 1500);
+    // });
 
 // save my current location as default
   $(document).on('tap', '#save-location', function () {

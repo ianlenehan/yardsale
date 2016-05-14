@@ -31,9 +31,17 @@ class UsersController < ApplicationController
       format.html {}
       format.json { render json: @response }
     end
-    user.current_latitude = params[:lat]
-    user.current_longitude = params[:long]
-    user.save
+    if params[:lat] != 'default'
+      puts "locate me /n/n/n/n/n/n/n"
+      user.current_latitude = params[:lat]
+      user.current_longitude = params[:long]
+      user.save
+    else
+      puts "default location /n/n/n/n/n/n/n"
+      user.current_latitude = user.latitude
+      user.current_longitude = user.longitude
+      user.save
+    end
   end
 
   def verify

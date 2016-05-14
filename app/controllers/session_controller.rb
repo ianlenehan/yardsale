@@ -3,7 +3,6 @@ class SessionController < ApplicationController
   end
 
   def create
-    puts params.inspect
     user = User.where(:phone => params[:phone]).first
     if user.present?
       session[:user_id] = user.id
